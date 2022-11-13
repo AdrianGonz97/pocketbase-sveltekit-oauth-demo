@@ -34,18 +34,39 @@
 </script>
 
 <main>
-	{#if data.user}
-		<h2>Welcome, {data.user.id}!</h2>
-		<form action="/logout" method="POST">
-			<button type="submit">Logout</button>
-		</form>
-	{:else}
-		<a
-			href={url.toString()}
-			on:click={() => {
-				window.localStorage.setItem('state', state);
-			}}>Connect with Twitch</a
-		>
-	{/if}
+	<div class="header">
+		{#if data.user}
+			<h2>Welcome, {data.user.email}!</h2>
+			<form action="/logout" method="POST">
+				<button type="submit">Logout</button>
+			</form>
+		{:else}
+			<a
+				href={url.toString()}
+				on:click={() => {
+					window.localStorage.setItem('state', state);
+				}}>Connect with Twitch</a
+			>
+		{/if}
+	</div>
 	<slot />
 </main>
+
+<style>
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 1rem 0;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+	}
+
+	button {
+		cursor: pointer;
+		font-size: 1.25rem;
+	}
+</style>
