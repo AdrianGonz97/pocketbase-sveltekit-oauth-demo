@@ -4,9 +4,7 @@ import { COOKIE_NAME } from '$lib/constants';
 import { dev } from '$app/environment';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	console.log('================HOOK===================');
 	const cookie = event.request.headers.get('cookie');
-	console.log('Before Hook:', cookie);
 
 	event.locals.pb = new PocketBase('http://127.0.0.1:8090');
 

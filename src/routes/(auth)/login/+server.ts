@@ -4,7 +4,7 @@ import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ locals, request }) => {
 	const { code, state } = (await request.json()) as { code: string; state: string };
-	console.log(code);
+
 	try {
 		await locals.pb
 			.collection('users')
