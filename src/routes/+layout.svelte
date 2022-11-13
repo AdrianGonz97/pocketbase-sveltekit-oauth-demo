@@ -6,17 +6,16 @@
 	export let data: LayoutServerData;
 
 	let url = new URL('https://id.twitch.tv/oauth2/authorize');
+	let state: string;
 
 	if (browser) {
-		const state = generateState();
 		const scopes = ['user:read:email'];
+		state = generateState();
 		url.searchParams.set('client_id', PUBLIC_TWITCH_CLIENT_ID);
 		url.searchParams.set('redirect_uri', PUBLIC_TWITCH_REDIRECT_URI);
 		url.searchParams.set('response_type', 'code');
 		url.searchParams.set('scope', scopes.join('+'));
 		url.searchParams.set('state', state);
-
-		window.localStorage.setItem('state', state);
 	}
 
 	function generateState() {
@@ -41,7 +40,12 @@
 			<button type="submit">Logout</button>
 		</form>
 	{:else}
-		<a href={url.toString()}>Connect with Twitch</a>
+		<a
+			href={url.toString()}
+			on:click={() => {
+				window.localStorage.setItem('state', state);
+			}}>Connect with Twitch</a
+		>
 	{/if}
 	<slot />
 </main>
