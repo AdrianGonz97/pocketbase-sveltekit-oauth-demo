@@ -5,7 +5,7 @@ export function generateState() {
 
 	let array = new Uint8Array(43);
 
-	window.crypto.getRandomValues(array);
+	array = crypto.getRandomValues(array);
 	array = array.map((x) => validChars.charCodeAt(x % validChars.length));
 
 	const randomState = String.fromCharCode.apply(null, [...array]);

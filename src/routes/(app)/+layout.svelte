@@ -1,17 +1,7 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { generateState, getAuthUrl } from '$lib/utils';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
-
-	let url = '';
-	let state: string;
-
-	if (browser) {
-		state = generateState();
-		url = getAuthUrl(state).toString();
-	}
 </script>
 
 <main>
@@ -30,12 +20,7 @@
 				</form>
 			</div>
 		{:else}
-			<a
-				href={url}
-				on:click={() => {
-					window.localStorage.setItem('state', state);
-				}}>Connect with Twitch</a
-			>
+			<a href={data.authUrl}>Connect with Twitch</a>
 		{/if}
 	</div>
 	<slot />
