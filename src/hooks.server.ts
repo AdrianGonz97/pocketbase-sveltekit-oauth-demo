@@ -12,10 +12,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.pb.authStore.loadFromCookie(cookie || '', COOKIE_NAME);
 
 	if (event.locals.pb.authStore.isValid) {
-		console.log('AuthStore is valid');
 		event.locals.user = structuredClone(event.locals.pb.authStore.model) ?? undefined;
 	} else {
-		console.log('AuthStore is invalid');
 		event.locals.user = undefined;
 	}
 
