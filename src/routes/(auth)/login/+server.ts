@@ -1,9 +1,18 @@
 import { PUBLIC_TWITCH_REDIRECT_URI } from '$env/static/public';
-import { error, json } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({ locals, request }) => {
-	const { code, state } = (await request.json()) as { code: string; state: string };
+export const GET: RequestHandler = async ({ locals, url, cookies }) => {
+	const code = url.searchParams.get('code');
+	const state = url.searchParams.get('state');
+
+	if (!code || !state) {
+		throw error(400, 'Missing code or state');
+	}
+
+	if (state !== cookies.get('state')) {
+		throw error(400, 'Invalid state');
+	}
 
 	try {
 		await locals.pb
@@ -14,5 +23,5 @@ export const POST: RequestHandler = async ({ locals, request }) => {
 		throw error(500, 'Something went wrong logging in');
 	}
 
-	return json({ success: true });
+	throw redirect(302, '/');
 };
