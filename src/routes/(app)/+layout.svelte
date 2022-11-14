@@ -8,8 +8,9 @@
 	<div class="header">
 		<nav>
 			<a href="/">Home</a>
+			<a href="/about">About</a>
 			{#if data.user}
-				<a href="profile">My Profile</a>
+				<a href="/profile">My Profile</a>
 			{/if}
 		</nav>
 		{#if data.user}

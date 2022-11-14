@@ -7,5 +7,6 @@
 </script>
 
 <h1>Welcome to your profile!</h1>
+<h3>This page is a protected route!</h3>
 <p>Email: {user.email}</p>
 <p>ID: {user.id}</p>
