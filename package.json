@@ -30,6 +30,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"pocketbase": "0.8.0-rc2"
+		"pocketbase": "0.8.0-rc3"
 	}
 }
