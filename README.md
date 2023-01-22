@@ -1,5 +1,5 @@
 # Sveltekit + Pocketbase OAuth2 Demo
-This repo serves as a personal demo for [Pocketbase](https://pocketbase.io/) and [Sveltekit](https://kit.svelte.dev/docs/introduction) using OAuth2 with any supported provider.
+This repo serves as a personal demo for [Pocketbase](https://pocketbase.io/) and [Sveltekit](https://kit.svelte.dev/docs/introduction) using OAuth2 with **any** supported provider.
 
 Designed to be as plug and play as possible. All you need to do is add the provider in the admin dashboard and you're ready to go! No further customization is necessary.
 
