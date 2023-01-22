@@ -21,7 +21,7 @@
 				</form>
 			</div>
 		{:else}
-			<a href={data.authUrl}>Connect with Twitch</a>
+			<a href="/signin">Sign in</a>
 		{/if}
 	</div>
 	<slot />
