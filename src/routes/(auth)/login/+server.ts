@@ -18,6 +18,9 @@ export const GET: RequestHandler = async ({ locals, url, cookies }) => {
 		throw error(400, 'Invalid state');
 	}
 
+	// clear the cookie after use
+	cookies.delete('provider');
+
 	try {
 		await locals.pb
 			.collection('users')
